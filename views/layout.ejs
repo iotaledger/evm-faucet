@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+
+<head>
+    <% include ./partials/head-meta %>
+    <title><%= title %> - Faucet</title>
+    <% include ./partials/head-includes %>
+</head>
+
+<body>
+    <div
+      class="flex h-screen bg-gray-50 dark:bg-gray-900"
+      :class="{ 'overflow-hidden': isSideMenuOpen }"
+    >
+        <div class="flex flex-col flex-1 w-full">
+            <% include ./partials/nav %>
+            <%-body -%>
+            <% include ./partials/footer %>
+        </div>
+    </div>
+    <% include ./partials/footer-includes %>
+</body>
+</html>
