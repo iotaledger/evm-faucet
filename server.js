@@ -34,7 +34,6 @@ app.set('view engine', 'ejs');
 
 app.use('/static', express.static('statics'));
 
-// index page
 app.get('/', function(req, res) {
     let tokens = [
         'wETH',
@@ -46,10 +45,9 @@ app.get('/', function(req, res) {
     });
 });
 
-// about page
-app.get('/about', function(req, res) {
-  res.render('pages/about');
-});
+// app.get('/about', function(req, res) {
+//   res.render('pages/about');
+// });
 
 let port = process.env.PORT || 8080;
 
