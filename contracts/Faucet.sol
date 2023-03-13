@@ -40,7 +40,7 @@ contract Faucet {
     mapping(address=>uint256) nextRequestAt;
 
     // No.of tokens to send when requested
-    uint256 faucetDripAmount = 1;
+    uint256 faucetDripAmount = 100 * 10 ** 18;
 
     // Sets the addresses of the Owner and the underlying token
     constructor (address _tokenAddress) {
