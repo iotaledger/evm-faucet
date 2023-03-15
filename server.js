@@ -5,7 +5,7 @@ var express = require('express');
 const bodyParser = require('body-parser');
 const queryParser = require('query-parser-express');
 var cors = require('cors');
-var { requestFunds } = require('./evm');
+var { requestFunds, getTokenData } = require('./evm');
 
 var app = express();
 
@@ -51,7 +51,12 @@ app.get('/', function(req, res) {
 // });
 
 app.post('/fund', async function(req, res) {
-    let responseData = requestFunds(req.body.token, req.body.address);
+    let responseData = await requestFunds(req.body.token, req.body.address);
+    res.status(200).send(responseData);
+});
+
+app.get('/token', async function(req, res) {
+    let responseData = await getTokenData(req.query.key);
     res.status(200).send(responseData);
 });
 

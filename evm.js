@@ -9,9 +9,8 @@ let contractAbi = require('./contracts/abi/faucet.json');
 
 async function requestFunds(token, address) {
     // console.log('token, address:', token, address);
-    token = token.toString().toLowerCase();
     const provider = new ethers.providers.JsonRpcProvider(process.env.SHIMMEREVM_JSONRPC);
-    let contractAddress = faucets[token];
+    let contractAddress = faucets[token.toString().toLowerCase()];
     // console.log('contractAddress:', contractAddress);
     // console.log('contractAbi:', contractAbi);
     const faucetContract = new ethers.Contract(contractAddress, contractAbi);
@@ -28,6 +27,16 @@ async function requestFunds(token, address) {
     return true;
 }
 
+async function getTokenData(token) {
+    return {
+        address: faucets[token.toString().toLowerCase()],
+        symbol: token,
+        decimals: 18,
+        image: 'https://shimmer.network/assets/logo.svg'
+    };
+}
+
 module.exports = {
-    requestFunds
+    requestFunds,
+    getTokenData
 };
