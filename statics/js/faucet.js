@@ -1,11 +1,13 @@
 'use strict';
 
-$('#btn-faucet').click(function (e) {
+$('#btn-faucet').click(async function (e) {
     e.preventDefault();
     let address = $('#address').val();
     let token = $( "#token option:selected" ).text();
-    if (validateAddress(address) === true) {
-        console.log('Requesting', token, 'for', address);
+    let addressValidated = await validateAddress(address);
+    if (addressValidated === true) {
+        $('#faucet-msg').html(alert.loading);
+        await requestFunds(token, address);
     } else {
         // console.log('Invalid Address!');
         $('#faucet-msg').html(alert.errorInvalid);
@@ -22,4 +24,14 @@ async function validateAddress(address) {
         return false;
     }
     return true;
+}
+
+async function requestFunds(token, address) {
+    console.log('\nRequesting', token, 'for', address);
+    let apiResponse = await axios.post('/fund', {
+        token: token,
+        address: address
+    });
+    console.log('apiResponse:', apiResponse);
+    $('#faucet-msg').html(alert.success);
 }

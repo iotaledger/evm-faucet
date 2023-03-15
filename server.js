@@ -5,6 +5,7 @@ var express = require('express');
 const bodyParser = require('body-parser');
 const queryParser = require('query-parser-express');
 var cors = require('cors');
+var { requestFunds } = require('./evm');
 
 var app = express();
 
@@ -48,6 +49,11 @@ app.get('/', function(req, res) {
 // app.get('/about', function(req, res) {
 //   res.render('pages/about');
 // });
+
+app.post('/fund', async function(req, res) {
+    let responseData = requestFunds(req.body.token, req.body.address);
+    res.status(200).send(responseData);
+});
 
 let port = process.env.PORT || 8080;
 

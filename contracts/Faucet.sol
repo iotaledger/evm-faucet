@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: UNLISCENSED
-
 pragma solidity ^0.8.4;
 
 interface IERC20 {
@@ -29,7 +28,7 @@ interface IERC20 {
 }
 
 contract Faucet {
-    
+
     // The underlying token of the Faucet
     IERC20 token;
 
