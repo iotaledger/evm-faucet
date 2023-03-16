@@ -1,5 +1,7 @@
 # EVM Faucet App
 
+> The tokens that are dropped by the faucet are not actual wrapped tokens but instead they are simulated wrapped tokens that just exist on our network. This means that these tokens do not have any real-world value and are only meant for testing or educational purposes, and they don't exist on the selected Testnet.
+
 ### Uses:
 - NodeJs
 - Express
