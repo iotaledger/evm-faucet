@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  evm-faucet:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    environment:
+      SHIMMEREVM_JSONRPC: ''
+      SHIMMEREVM_CHAINID: ''
+      PRIVATE_KEY: ''
+      WETH_FAUCET_ADDRESS: ''
+      WBTC_FAUCET_ADDRESS: ''
+      WETH_ADDRESS: ''
+      WBTC_ADDRESS: ''
+    container_name: evm-faucet
+    ports:
+      - "8080:8080/tcp"
+    restart: on-failure
