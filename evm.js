@@ -3,6 +3,7 @@ const { ethers } = require("ethers");
 
 const faucets = require('./contracts/faucets.json');
 let contractAbi = require('./contracts/abi/faucet.json');
+const tokens = require('./contracts/tokens.json');
 
 async function requestFunds(token, address) {
     // console.log('token, address:', token, address);
@@ -26,7 +27,7 @@ async function requestFunds(token, address) {
 
 async function getTokenData(token) {
     return {
-        address: faucets[token.toString().toLowerCase()],
+        address: tokens[token.toString().toLowerCase()],
         symbol: token,
         decimals: 18,
         image: 'https://shimmer.network/assets/logo.svg'
