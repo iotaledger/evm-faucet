@@ -35,11 +35,10 @@ app.set('view engine', 'ejs');
 
 app.use('/static', express.static('statics'));
 
+const faucets = require('./contracts/faucets.json');
+
 app.get('/', function(req, res) {
-    let tokens = [
-        'wETH',
-        'wBTC'
-    ]
+    let tokens = Object.keys(faucets);
     res.render('pages/index', {
         title: 'EVM',
         tokens: tokens

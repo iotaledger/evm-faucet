@@ -1,10 +1,7 @@
 'use strict';
 const { ethers } = require("ethers");
 
-const faucets = {
-    'weth': process.env.WETH_FAUCET_ADDRESS,
-    'wbtc': process.env.WBTC_FAUCET_ADDRESS
-}
+const faucets = require('./contracts/faucets.json');
 let contractAbi = require('./contracts/abi/faucet.json');
 
 async function requestFunds(token, address) {
