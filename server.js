@@ -50,16 +50,27 @@ app.get('/', function(req, res) {
 // });
 
 app.post('/fund', async function(req, res) {
-    let responseData = await requestFunds(req.body.token, req.body.address);
-    res.status(200).send(responseData);
+    try {
+        const responseData = await requestFunds(req.body.token, req.body.address);
+        res.status(200).send(responseData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
 });
 
 app.get('/token', async function(req, res) {
-    let responseData = await getTokenData(req.query.key);
-    res.status(200).send(responseData);
+    try {
+        const responseData = await getTokenData(req.query.key);
+        res.status(200).send(responseData);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Server error');
+    }
 });
 
 let port = process.env.PORT || 8080;
 
-app.listen(port);
-console.log('Initiating Faucet on', port);
+app.listen(port, () => {
+    console.log(`Initiating Faucet on ${port}`);
+});
