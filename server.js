@@ -69,6 +69,12 @@ app.get('/token', async function(req, res) {
     }
 });
 
+app.get('*', async function(req, res) {
+    res.status(404).send({
+        message: 'This route does not exist!'
+    });
+});
+
 let port = process.env.PORT || 8080;
 
 app.listen(port, () => {
