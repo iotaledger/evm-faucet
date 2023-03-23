@@ -70,8 +70,8 @@ app.get('/token', async function(req, res) {
 });
 
 app.get('*', async function(req, res) {
-    res.status(404).send({
-        message: 'This route does not exist!'
+    res.render('pages/404', {
+        title: 'PAGE NOT FOUND'
     });
 });
 
