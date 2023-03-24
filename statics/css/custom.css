@@ -4,3 +4,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 } */
+
+#add-to-metamask:hover {
+    cursor: pointer;
+}

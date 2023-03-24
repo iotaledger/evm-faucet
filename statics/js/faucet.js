@@ -1,16 +1,25 @@
 'use strict';
 
+const shimmerevm = {
+    chainName: 'ShimmerEVM Testnet',
+    chainId: 1071,
+    rpcUrl: 'https://json-rpc.evm.testnet.shimmer.network',
+    blockExplorerUrl: 'https://explorer.evm.testnet.shimmer.network/',
+    currency: 'SMR',
+    decimal: 18
+}
+
 $('#btn-faucet').click(async function (e) {
     e.preventDefault();
     let address = $('#address').val();
     let token = $( "#token option:selected" ).text().toString().toLowerCase();
     let addressValidated = await validateAddress(address);
     if (addressValidated === true) {
-        $('#faucet-msg').html(alert.loading);
+        $('#faucet-msg').html(alertContent.loading);
         await requestFunds(token, address);
     } else {
         // console.log('Invalid Address!');
-        $('#faucet-msg').html(alert.errorInvalid);
+        $('#faucet-msg').html(alertContent.errorInvalid);
     }
 });
 
@@ -49,6 +58,33 @@ $('#btn-token').click(async function(e) {
     }
 });
 
+$('#add-to-metamask').click(async function(e) {
+    e.preventDefault();
+    console.log('Adding Shimmer to Metamask...');
+    let hexParsedChainId = parseChainId(shimmerevm.chainId);
+
+    try {
+        await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+                {
+                    chainName: shimmerevm.chainName,
+                    chainId: hexParsedChainId,
+                    nativeCurrency: {
+                        name: shimmerevm.currency,
+                        decimals: shimmerevm.decimal,
+                        symbol: shimmerevm.currency
+                    },
+                    rpcUrls: [shimmerevm.rpcUrl],
+                    blockExplorerUrls: [shimmerevm.blockExplorerUrl]
+                }
+            ]
+        });
+    } catch (error) {
+        console.log(error);
+    }
+});
+
 // Validate evm address
 async function validateAddress(address) {
     try {
@@ -68,6 +104,11 @@ async function requestFunds(token, address) {
         address: address
     });
     console.log('apiResponse:', apiResponse);
-    $('#faucet-msg').html(alert.success);
+    $('#faucet-msg').html(alertContent.success);
 }
 
+function parseChainId(chainId) {
+    let hexChainId = ethers.utils.hexlify(chainId);
+    // Trim any leading 0s
+    return '0x' + hexChainId.split('0x')[1].replace(/^0+/, '');
+}
