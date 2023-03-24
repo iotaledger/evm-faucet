@@ -3,7 +3,7 @@
 $('#btn-faucet').click(async function (e) {
     e.preventDefault();
     let address = $('#address').val();
-    let token = $( "#token option:selected" ).text().split('$')[1].toString().toLowerCase();
+    let token = $( "#token option:selected" ).text().toString().toLowerCase();
     let addressValidated = await validateAddress(address);
     if (addressValidated === true) {
         $('#faucet-msg').html(alert.loading);
@@ -16,7 +16,7 @@ $('#btn-faucet').click(async function (e) {
 
 $('#btn-token').click(async function(e) {
     e.preventDefault();
-    let token = $( "#token option:selected" ).text().split('$')[1].toString().toLowerCase();
+    let token = $( "#token option:selected" ).text().toString().toLowerCase();
     // Get Token Data
     let apiResponse = await axios.get('/token', {
         params: {
