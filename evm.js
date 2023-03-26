@@ -30,7 +30,7 @@ async function getTokenData(token) {
         address: tokens[token.toString().toLowerCase()],
         symbol: token,
         decimals: 18,
-        image: 'https://shimmer.network/assets/logo.svg'
+        image: 'https://files.iota.org/media/smr_evm_circular_crop.png'
     };
 }
 
