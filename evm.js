@@ -8,7 +8,7 @@ const tokens = require('./contracts/tokens.json');
 async function requestFunds(token, address) {
     // console.log('token, address:', token, address);
     const provider = new ethers.providers.JsonRpcProvider(process.env.SHIMMEREVM_JSONRPC);
-    let contractAddress = faucets[token.toString().toLowerCase()];
+    let contractAddress = faucets[token.toString()];
     // console.log('contractAddress:', contractAddress);
     // console.log('contractAbi:', contractAbi);
     const faucetContract = new ethers.Contract(contractAddress, contractAbi);
@@ -27,7 +27,7 @@ async function requestFunds(token, address) {
 
 async function getTokenData(token) {
     return {
-        address: tokens[token.toString().toLowerCase()],
+        address: tokens[token.toString()],
         symbol: token,
         decimals: 18,
         image: 'https://files.iota.org/media/smr_evm_circular_crop.png'

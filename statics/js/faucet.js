@@ -12,7 +12,7 @@ const shimmerevm = {
 $('#btn-faucet').click(async function (e) {
     e.preventDefault();
     let address = $('#address').val();
-    let token = $( "#token option:selected" ).text().toString().toLowerCase();
+    let token = $( "#token option:selected" ).text().toString();
     let addressValidated = await validateAddress(address);
     if (addressValidated === true) {
         $('#faucet-msg').html(alertContent.loading);
@@ -25,14 +25,15 @@ $('#btn-faucet').click(async function (e) {
 
 $('#btn-token').click(async function(e) {
     e.preventDefault();
-    let token = $( "#token option:selected" ).text().toString().toLowerCase();
+    let token = $( "#token option:selected" ).text().toString();
+    // console.log('token:', token);
     // Get Token Data
     let apiResponse = await axios.get('/token', {
         params: {
             key: token
         }
     });
-    console.log('apiResponse:', apiResponse);
+    // console.log('apiResponse:', apiResponse);
 
     try {
         const wasAdded = await ethereum.request({
@@ -103,7 +104,7 @@ async function requestFunds(token, address) {
         token: token,
         address: address
     });
-    console.log('apiResponse:', apiResponse);
+    // console.log('apiResponse:', apiResponse);
     $('#faucet-msg').html(alertContent.success);
 }
 
