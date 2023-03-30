@@ -20,6 +20,3 @@
 `npm start` or `nodemon`
 
 Open the webapp on your browser.
-
-
-
