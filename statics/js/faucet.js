@@ -28,12 +28,7 @@ $('#btn-token').click(async function(e) {
     let token = $( "#token option:selected" ).text().toString();
     // console.log('token:', token);
     // Get Token Data
-    let apiResponse = await axios.get('/token', {
-        params: {
-            key: token
-        }
-    });
-    // console.log('apiResponse:', apiResponse);
+    let tokenData = await getTokenInfo(token);
 
     try {
         const wasAdded = await ethereum.request({
@@ -41,10 +36,10 @@ $('#btn-token').click(async function(e) {
             params: {
                 type: 'ERC20',
                 options: {
-                    address: apiResponse.data.address,
-                    symbol: apiResponse.data.symbol,
-                    decimals: apiResponse.data.decimals,
-                    image: apiResponse.data.image,
+                    address: tokenData.address,
+                    symbol: tokenData.symbol,
+                    decimals: tokenData.decimals,
+                    image: tokenData.image,
                 },
             },
         });
@@ -113,3 +108,19 @@ function parseChainId(chainId) {
     // Trim any leading 0s
     return '0x' + hexChainId.split('0x')[1].replace(/^0+/, '');
 }
+
+async function getTokenInfo(tokenName) {
+    let apiResponse = await axios.get('/token', {
+        params: {
+            key: tokenName
+        }
+    });
+    return apiResponse.data
+}
+
+$('#token').change(async function(){
+    let token = $(this).val();
+    let tokenData = await getTokenInfo(token);
+    $('#token-name').html(token);
+    $('#token-address').html(tokenData.address);
+});

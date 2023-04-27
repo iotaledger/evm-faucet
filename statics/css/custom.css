@@ -8,3 +8,10 @@
 #add-to-metamask:hover {
     cursor: pointer;
 }
+
+.bg-dark {
+    background: url('/static/img/background.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -6,6 +6,15 @@ const bodyParser = require('body-parser');
 const queryParser = require('query-parser-express');
 var cors = require('cors');
 var { requestFunds, getTokenData } = require('./evm');
+const rateLimit = require('express-rate-limit')
+
+const apiLimiter = rateLimit({
+    windowMs: 24 * 60 * 60 * 1000, // 24 hrs in milliseconds
+    max: 10,
+    message: 'You have exceeded the 10 requests in 24 hrs limit!', 
+    standardHeaders: true,
+    legacyHeaders: false,
+});
 
 var app = express();
 
@@ -49,7 +58,7 @@ app.get('/', function(req, res) {
 //   res.render('pages/about');
 // });
 
-app.post('/fund', async function(req, res) {
+app.post('/fund', apiLimiter, async function(req, res) {
     try {
         const responseData = await requestFunds(req.body.token, req.body.address);
         res.status(200).send(responseData);
