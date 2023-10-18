@@ -2,7 +2,7 @@
 
 const shimmerevm = {
     chainName: 'ShimmerEVM Testnet',
-    chainId: 1072,
+    chainId: 1073,
     rpcUrl: 'https://json-rpc.evm.testnet.shimmer.network',
     blockExplorerUrl: 'https://explorer.evm.testnet.shimmer.network/',
     currency: 'SMR',
