@@ -21,11 +21,11 @@ module.exports = {
   etherscan: {
     apiKey:
         {
-          ShimmerEVMTestnet: "xxx"
+          ShimmerEVMTestnet: "no-api-key-required"
         },
     customChains: [
       {
-        apikey: "xxx",
+        apikey: "no-api-key-required",
         network: "ShimmerEVMTestnet",
         chainId: SHIMMEREVM_CHAINID ? parseInt(SHIMMEREVM_CHAINID) : 1073,
         urls: {
