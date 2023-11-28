@@ -14,13 +14,8 @@
 ### Setup
 
 1. `cp .env.example .env` and replace the variables with your custom ones.
-2. `npm install --save-dev`
+2. `npm install`
 
-### Deploy Contracts
-1. Run `npx hardhat run --network ShimmerEVMTestnet .\scripts\deployEverything.js` to deploy all tokens in `contracts\tokens.json`, create faucets for them, and update both the `tokens.json` and `faucets.json` files with new addresses.
-
-Note: If you want to allow another address to request funds from the faucet besides the deployer, set the env var `FAUCET_ADMIN` with this address before running the script.
-Since the testnet can be slow to update, if you set `SEND_BLOCK_TXNS` to `true` then your wallet will send six zero value transfer transactions to help move the network along while we wait to verify the contracts.
 ### Run
 `npm start` or `nodemon`
 
