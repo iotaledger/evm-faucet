@@ -1,26 +1,26 @@
 {
     "WEN": {
-        "address": "0x8dDefe534bb73ccF89f49a1CBB7eaFD9a414493C"
+        "address": "0x9632FCbB55019DB443BdD7D1A1639Da2140A23bb"
     },
     "MOON": {
-        "address": "0x880936B90CFC748ecDFD147e62b0A5Aaef0E4d39"
+        "address": "0xD788CE108BBF7E8F9ba08c33199454046c833e53"
     },
     "fBTC": {
-        "address": "0x2d5A08CEe4a8dF403396e00190E2cec4B6404673"
+        "address": "0x31f4ac4FE8B62Ab45c7089Cf6bfAc344F27dC78A"
     },
     "fETH": {
-        "address": "0x737C79ee6e4C43E0290400b4463F06F5D8329002"
+        "address": "0xcc90B0D1180078179245713eF70C606dEcBf602b"
     },
     "fAVAX": {
-        "address": "0xE76574A0dc46F103dd09a03d3CCfED2E81E8F3d3"
+        "address": "0x4716B8EaaDCb41dec89f16f26F2Ef5aa0cE6ae04"
     },
     "fUSDT": {
-        "address": "0xdEE06b41Bf5b87F52d12098e2c233e1b4eBaf20B"
+        "address": "0xE596B1f57269fa246631026109221601DE109526"
     },
     "fUSDC": {
-        "address": "0xF7C723a34CEB0dEB5fECFd655E1d231742E5155D"
+        "address": "0xef3547b9B9E00d7d1f804fC5972f2494e14bf2BF"
     },
     "fMIOTA": {
-        "address": "0x8d76Bd3f79472F11a5b2b461159d5b203d6EA22d"
+        "address": "0x5fEe1f9Fe05eFA6cF81F5C82261cB5e12526b177"
     }
 }

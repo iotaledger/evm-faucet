@@ -7,8 +7,8 @@ const tokens = require('./contracts/tokens.json');
 
 async function requestFunds(token, address) {
     // console.log('token, address:', token, address);
-    const provider = JsonRpcProvider(process.env.SHIMMEREVM_JSONRPC);
-    let contractAddress = faucets[token.toString()];
+    const provider = new ethers.providers.JsonRpcProvider(process.env.SHIMMEREVM_JSONRPC);
+    let contractAddress = faucets[token.toString()].address;
     console.log('contractAddress:', contractAddress);
     // console.log('contractAbi:', contractAbi);
     const faucetContract = new ethers.Contract(contractAddress, contractAbi);
